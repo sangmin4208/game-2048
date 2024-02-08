@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import { HTMLAttributes } from 'react'
+import { Cell } from './cell'
 interface BoardProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Board = ({ className, ...props }: BoardProps) => {
@@ -7,14 +8,7 @@ export const Board = ({ className, ...props }: BoardProps) => {
     const totalCellsCount = 16
     const cells = []
     for (let i = 0; i < totalCellsCount; i++) {
-      cells.push(
-        <div
-          key={i}
-          className="border aspect-square m-1 rounded-sm bg-slate-300"
-        >
-          {/* cell */}
-        </div>,
-      )
+      cells.push(<Cell key={i} />)
     }
     return cells
   }
