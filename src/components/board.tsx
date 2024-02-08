@@ -15,6 +15,9 @@ export const Board = ({ className, ...props }: BoardProps) => {
   return (
     <div className={cn(className)} {...props}>
       <div className="w-[40vw]">
+        <div className="bg-primary rounded-lg p-4">
+          <h1 className="text-2xl font-bold text-white">2048</h1>
+        </div>
         <div className="border rounded-lg bg-secondary">
           <div className="grid grid-cols-4 gap-1 p-4">{renderGrid()}</div>
         </div>
