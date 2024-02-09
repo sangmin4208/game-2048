@@ -1,20 +1,20 @@
 import { cn } from '@/lib/utils'
-import { HTMLAttributes } from 'react'
-interface TileProps extends HTMLAttributes<HTMLDivElement> {
-  value: number
+import { Tile as TileType } from '@/models/tile'
+import { motion } from 'framer-motion'
+interface TileProps {
+  tile: TileType
 }
 
-export const Tile = ({ value, className, ...props }: TileProps) => {
+export const Tile = ({ tile }: TileProps) => {
   return (
-    <div
+    <motion.div
       role="tile"
+      layoutId={tile.id}
       className={cn(
-        'size-full absolute flex items-center justify-center bg-amber-300 rounded-lg overflow-hidden',
-        className,
+        'size-full z-50 absolute flex items-center justify-center bg-amber-300 rounded-lg overflow-hidden',
       )}
-      {...props}
     >
-      <span className="text-4xl font-bold">{value}</span>
-    </div>
+      <span className="text-4xl font-bold">{tile.value}</span>
+    </motion.div>
   )
 }

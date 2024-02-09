@@ -12,7 +12,7 @@ export const Cell = ({ className, tile, ...props }: CellProps) => {
       className="border relative aspect-square m-1 rounded-sm bg-slate-300"
     >
       {/* cell */}
-      {tile && <Tile className="absolute inset-0" value={tile.value} />}
+      {tile && <Tile tile={tile} />}
     </div>
   )
 }
