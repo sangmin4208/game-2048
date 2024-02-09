@@ -7,9 +7,17 @@ describe('Board', () => {
     // Arrange
     const { container } = render(<Board />)
     // Act
-    // with role="cell" we can select all the cells
     const cells = container.querySelectorAll('[role="cell"]')
     // Assert
     expect(cells).toHaveLength(16)
+  })
+
+  it('should render the board with 2 tiles', () => {
+    // Arrange
+    const { container } = render(<Board />)
+    // Act
+    const tiles = container.querySelectorAll('[role="tile"]')
+    // Assert
+    expect(tiles).toHaveLength(2)
   })
 })
