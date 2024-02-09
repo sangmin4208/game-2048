@@ -9,11 +9,11 @@ interface BoardProps extends HTMLAttributes<HTMLDivElement> {}
 export const Board = ({ className, ...props }: BoardProps) => {
   const [gameState, dispatch] = useReducer(gameReducter, initialState)
   const initialized = useRef(false)
-  console.log(gameState.board)
   const handleKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
-      case 'ArrowUp':
+      case 'ArrowUp' || 'ArrowDown' || 'ArrowLeft' || 'ArrowRight':
         event.preventDefault()
+      case 'ArrowUp':
         dispatch({ type: 'move_up' })
         break
       case 'ArrowDown':
@@ -30,7 +30,6 @@ export const Board = ({ className, ...props }: BoardProps) => {
 
   const renderGrid = useMemo(() => {
     const cells = []
-    console.log(gameState.tiles)
     for (let i = 0; i < tileCountPerDimension; i++) {
       for (let j = 0; j < tileCountPerDimension; j++) {
         const id = gameState.board[i][j]
