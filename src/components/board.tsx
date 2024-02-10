@@ -2,7 +2,7 @@
 import { tileCountPerDimension } from '@/constants'
 import { cn } from '@/lib/utils'
 import gameReducter, { initialState } from '@/reducers/game-reducer'
-import { debounce } from 'lodash'
+import { debounce, throttle } from 'lodash'
 import { HTMLAttributes, useEffect, useMemo, useReducer, useRef } from 'react'
 import { Cell } from './cell'
 interface BoardProps extends HTMLAttributes<HTMLDivElement> {}
@@ -48,7 +48,10 @@ export const Board = ({ className, ...props }: BoardProps) => {
     dispatch({ type: 'create_tile', tile: { position: [0, 2], value: 2 } })
   }, [])
   useEffect(() => {
-    window.addEventListener('keydown', debounce(handleKeyDown, 50))
+    window.addEventListener(
+      'keydown',
+      debounce(throttle(handleKeyDown, 500), 100),
+    )
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
