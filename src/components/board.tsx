@@ -50,7 +50,7 @@ export const Board = ({ className, ...props }: BoardProps) => {
   useEffect(() => {
     window.addEventListener(
       'keydown',
-      debounce(throttle(handleKeyDown, 500), 100),
+      debounce(throttle(handleKeyDown, 250), 100),
     )
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
